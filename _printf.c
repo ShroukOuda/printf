@@ -6,7 +6,7 @@
  */
 int _printf(const char *format, ...)
 {
-	unsigned int n, cnt = 0;
+	unsigned int n, i, cnt = 0;
 	char *s;
 	va_list prf;
 
@@ -32,14 +32,14 @@ int _printf(const char *format, ...)
 				s = va_arg(prf, char *);
 				string(s);
 			}
-			else if (format[n + 1] == 'r')
-			{
-				_putchar('%');
-				_putchar('r');
-			}
 			else if (format[n] == '\\' && format[n + 1] == 'n')
 			{
 				_putchar('\n');
+			}
+			else if (format[n + 1] == 'd' || format[n + 1] == 'i')
+			{
+				i = va_arg(prf, int);
+				number(i);
 			}
 			n++;
 		}
