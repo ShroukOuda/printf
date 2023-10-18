@@ -16,33 +16,14 @@ int _printf(const char *format, ...)
 	for (n = 0; format[n] != '\0'; n++)
 	{
 		if (format[n] != '%' && format[n] != '\\')
+		{
 			_putchar(format[n]);
-		if (format[n] == '%' || format[n] == '\\')
+		}
+		if (format[n] == '%')
 		{
 			if (format[n + 1] == 'c')
 			{
-				_putchar(va_arg(prf, int));
-			}
-			else if (format[n + 1] == '%')
-			{
-				_putchar('%');
-			}
-			else if (format[n + 1] == 's')
-			{
-				s = va_arg(prf, char *);
-				string(s);
-			}
-			else if (format[n] == '\\' && format[n + 1] == 'n')
-			{
-				_putchar('\n');
-			}
-			else if (format[n + 1] == 'd' || format[n + 1] == 'i')
-			{
-				i = va_arg(prf, int);
-				number(i);
-			}
-			n++;
-		}
+
 	cnt++;
 	}
 return (cnt);
