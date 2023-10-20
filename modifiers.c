@@ -1,32 +1,33 @@
 #include "main.h"
 /**
- * number - check the code.
- * @i: it's int
+ * modifiers - check the code.
+ * @c: it's a char
+ * @mod: it's a va_list
  * Return: Always 0.
  */
-void number(int i)
+void modifiers(char c, va_list mod)
 {
-	if (i < 0)
+	if (c == 'c')
 	{
-		_putchar('-');
-		i = -i;
+		_putchar(va_arg(mod, int));
 	}
-	if (i / 10)
-		number(i / 10);
-	_putchar((i % 10) + 48);
-}
-/**
- * string - check the code.
- * @str: it's a string
- * Return: Always 0.
- */
-void string(char *str)
-{
-	int i = 0;
-
-	while (str[i])
+	else if (c == '%')
 	{
-		_putchar(str[i]);
-		i++;
+		_putchar('%');
+	}
+	else if (c == 'd' || c == 'i')
+	{
+		number(va_arg(mod, int));
+	}
+	else if (c == 's')
+	{
+		char *s;
+
+		s = va_arg(mod, char *);
+		string(s);
+	}
+	else
+	{
+		_putchar(c);
 	}
 }
